@@ -1,9 +1,12 @@
 # openshift-aws
 Evalutating the ROSA (Redhat OpenShift on AWS) service
 
+![openshift-on-aws](screenshots/openshift-on-aws.png)
+
 What is ROSA?
 
 > Red Hat OpenShift Service on AWS (ROSA) is a fully-managed OpenShift service, jointly managed and supported by both Red Hat and Amazon Web Services (AWS). Having your clusters maintained by this service gives you the freedom to focus on deploying applications. (see https://docs.openshift.com/rosa/rosa_architecture/rosa-understanding.html)
+
 
 ## Pricing
 
