@@ -200,6 +200,9 @@ Also checking back into our AWS account at https://eu-central-1.console.aws.amaz
 
 ![aws-ec2-console](screenshots/aws-ec2-console.png)
 
+The cluster creation process will take it's time. My cluster needed around 30min+ to be ready. You will see if the installation has finised if `rosa list clusters` gives a `ready` state. Also the RedHat console switches the view like this:
+
+![redhat-console-cluster-installed](screenshots/redhat-console-cluster-installed.png)
 
 ## Links
 
