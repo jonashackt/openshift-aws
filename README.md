@@ -192,6 +192,12 @@ Show the status of the cluster with
 rosa list clusters
 ```
 
+We can also use the link from the output presented in `Details Page` to watch the cluster creation process inside the RedHat console:
+
+![redhat-console-cluster-creation](screenshots/redhat-console-cluster-creation.png)
+
+
+
 ## Links
 
 ROSA docs: https://docs.openshift.com/rosa/welcome/index.html
