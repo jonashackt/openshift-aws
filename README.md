@@ -12,10 +12,13 @@ What is ROSA?
 As of writing this is: 
 
 1.) hourly fee for the cluster, which is $0.03/cluster/hour**
+
 2.) pricing per worker node, which is $0.171 per 4 vCPU / hour for On-demand consumption
 
+3.) EC2 pricing comes on top
 
-## Enable ROSA inside your AWS account
+
+## Enable OpenShift inside your AWS account
 
 > [To create a new cluster](https://docs.openshift.com/rosa/rosa_architecture/rosa-understanding.html#rosa-cluster-consoles_rosa-understanding), start from the AWS Management console using ROSA. This integrates with the new rosa CLI and API to provision clusters in your AWS account. The new API for cluster creation alleviates the burden of manually deploying the cluster in your existing VPC and account.
 
@@ -66,6 +69,8 @@ I: Logged in as 'jonashackt' on 'https://api.openshift.com'
 
 
 ## Initialize a ROSA on AWS
+
+> See https://docs.openshift.com/rosa/rosa_getting_started/rosa-installing-rosa.html
 
 Be sure to have the AWS account configured in your `aws` CLI in which you enabled ROSA using the console. Therefore check your Access Key and Secret:
 
@@ -143,6 +148,8 @@ I: Current OpenShift Client Version: 4.8.11
 
 ## Create a ROSA cluster on AWS
 
+> see https://docs.openshift.com/rosa/rosa_getting_started/rosa-creating-cluster.html
+
 Finally we're where we wanted to be in the first place. Let's create our cluster:
 
 ```
@@ -200,10 +207,60 @@ Also checking back into our AWS account at https://eu-central-1.console.aws.amaz
 
 ![aws-ec2-console](screenshots/aws-ec2-console.png)
 
-The cluster creation process will take it's time. My cluster needed around 30min+ to be ready. You will see if the installation has finised if `rosa list clusters` gives a `ready` state. Also the RedHat console switches the view like this:
+The cluster creation process will take it's time. My cluster needed around 30min+ to be ready. We can also follow the OpenShift installer logs using rosa CLI:
+
+```
+rosa logs install --cluster=my-first-rosa --watch
+```
+
+
+You will see if the installation has finised if `rosa list clusters` gives a `ready` state. Also the RedHat console switches the view like this:
 
 ![redhat-console-cluster-installed](screenshots/redhat-console-cluster-installed.png)
+
+
+## Access the ROSA cluster as administrator
+
+> See https://docs.openshift.com/rosa/rosa_getting_started/rosa-accessing-cluster.html
+
+> As a best practice, access your Red Hat OpenShift Service on AWS (ROSA) cluster using an identity provider (IDP) account. However, the cluster administrator who created the cluster can access it using the quick access procedure.
+
+So let's create a cluster admin for conveniance:
+
+```
+rosa create admin --cluster=my-first-rosa
+```
+
+This will output a `oc` command to login to our new ROSA cluster with the admin user:
+
+```
+W: It is recommended to add an identity provider to login to this cluster. See 'rosa create idp --help' for more information.
+I: Admin account has been added to cluster 'my-first-rosa'.
+I: Please securely store this generated password. If you lose this password you can delete and recreate the cluster admin user.
+I: To login, run the following command:
+
+   oc login https://api.my-first-rosa.dt1y.p1.openshiftapps.com:6443 --username cluster-admin --password nice-password-here
+
+I: It may take up to a minute for the account to become active.
+```
+
+Note this password - you'll need it later :)
+
+With that we can access our new ROSA cluster via `oc` or `kubectl` CLIs as we're used to from any other cluster. 
+
+We can also open our Browser to have a look into the cluster dashboard at https://console-openshift-console.apps.my-first-rosa.dt1y.p1.openshiftapps.com/
+
+![openshift-dashboard](screenshots/openshift-dashboard.png)
+
+
+
 
 ## Links
 
 ROSA docs: https://docs.openshift.com/rosa/welcome/index.html
+
+https://aws.amazon.com/blogs/containers/announcing-red-hat-openshift-service-on-aws/
+
+https://aws.amazon.com/quickstart/architecture/openshift/
+
+Every step with rosa CLI https://docs.openshift.com/rosa/rosa_cli/rosa-get-started-cli.html#rosa-using-bash-script_rosa-getting-started-cli
