@@ -196,6 +196,9 @@ We can also use the link from the output presented in `Details Page` to watch th
 
 ![redhat-console-cluster-creation](screenshots/redhat-console-cluster-creation.png)
 
+Also checking back into our AWS account at https://eu-central-1.console.aws.amazon.com/ec2/v2/home we can see the EC2 instances beeing prepared:
+
+![aws-ec2-console](screenshots/aws-ec2-console.png)
 
 
 ## Links
