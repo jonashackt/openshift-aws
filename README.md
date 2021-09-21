@@ -256,6 +256,11 @@ We can also open our Browser to have a look into the cluster dashboard at https:
 ![openshift-dashboard](screenshots/openshift-dashboard.png)
 
 
+## Delete the ROSA cluster
+
+```
+rosa delete cluster --cluster=my-first-rosa --watch
+```
 
 
 ## Links
