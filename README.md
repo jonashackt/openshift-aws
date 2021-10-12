@@ -256,6 +256,15 @@ We can also open our Browser to have a look into the cluster dashboard at https:
 ![openshift-dashboard](screenshots/openshift-dashboard.png)
 
 
+## Rosa Architecture
+
+If you wonder, which types of nodes the rosa CLI installes - here a good overview blog post: https://aws.amazon.com/blogs/containers/red-hat-openshift-service-on-aws-architecture-and-networking/
+
+The diagram tells us, that `infrastructure` nodes provide "Registry, Router & Monitoring":
+
+![aws-rosa-architecture](screenshots/aws-rosa-architecture.png)
+
+
 ## Delete the ROSA cluster
 
 ```
@@ -272,3 +281,6 @@ https://aws.amazon.com/blogs/containers/announcing-red-hat-openshift-service-on-
 https://aws.amazon.com/quickstart/architecture/openshift/
 
 Every step with rosa CLI https://docs.openshift.com/rosa/rosa_cli/rosa-get-started-cli.html#rosa-using-bash-script_rosa-getting-started-cli
+
+
+https://aws.amazon.com/blogs/containers/red-hat-openshift-service-on-aws-architecture-and-networking/
